@@ -1,0 +1,125 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@using MvcBlog.ViewModels;
+@using MvcBlog.Models;
+@model PersonDbViewModel;
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-default">
+            <div class="card-header">
+                <h2>Edit Person</h2>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Update", "Home"))
+                {
+                    <div class="input-group mb-3">
+                        @Html.TextBox("id", @Model.OnePerson.Id, new { @class = "form-control" })
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" value="@Model.OnePerson.Name" name="name">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" value="@Model.OnePerson.Age" name="age">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" value="@Model.OnePerson.Height" name="height">
+                        <span class="input-group-text">CM</span>
+                        <input type="text" class="form-control" value="@Model.OnePerson.Weight" name="weight">
+                        <span class="input-group-text">KG</span>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        @{
+                            if (Model.OnePerson.Gender == 'M')
+                            {
+                                <div class="input-group-text">
+                                    <input type="radio" value="M" name="gender" checked>
+                                </div>
+                                <label class="form-control">Male</label>
+                                <div class="input-group-text">
+                                    <input type="radio" value="F" name="gender">
+                                </div>
+                                <label class="form-control">Female</label>
+                            }
+                            else
+                            {
+                                <div class="input-group-text">
+                                    <input type="radio" value="M" name="gender">
+                                </div>
+                                <label class="form-control">Male</label>
+                                <div class="input-group-text">
+                                    <input type="radio" value="F" name="gender" checked>
+                                </div>
+                                <label class="form-control">Female</label>
+                            }
+                        }
+                        
+                    </div>
+                    <div class="input-group mb-3">
+
+                        @{
+                            if (Model.OnePerson.IsMarried == false)
+                            {
+                                <div class="input-group-text">
+                                    <input type="radio" value="0" name="isMarried" checked>
+                                </div>
+                                <label class="form-control">Single</label>
+                                <div class="input-group-text">
+                                    <input type="radio" value="1" name="isMarried">
+                                </div>
+                                <label class="form-control">Married</label>
+                            }
+                            else
+                            {
+                                <div class="input-group-text">
+                                    <input type="radio" value="0" name="isMarried">
+                                </div>
+                                <label class="form-control">Single</label>
+                                <div class="input-group-text">
+                                    <input type="radio" value="1" name="isMarried" checked>
+                                </div>
+                                <label class="form-control">Married</label>
+                            }
+                        }
+                      
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Birthday</span>
+                        @Html.TextBox("birthDate", @Model.OnePerson.BirthDate, new { @class = "form-control" })
+
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input type="text" class="form-control" value="@Model.OnePerson.Salary" name="salary">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">ID Number</span>
+                        <input type="text" class="form-control" value="@Model.OnePerson.IDNumber" name="idNumber">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Children Count</span>
+                        <input type="text" class="form-control" value="@Model.OnePerson.ChildrenCount" name="childrenCount">
+                        <span class="input-group-text">Number Of Pets</span>
+                        <input type="text" class="form-control" value="@Model.OnePerson.NumberOfPets" name="numberOfPets">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <button type="submit" class="form-control btn btn-dark">Save</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
